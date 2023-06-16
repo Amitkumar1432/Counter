@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .circle {
+        text-align: center;
+        line-height: 120px; /* Adjusted line height to vertically center the text */
+        font-weight: bold;
+        color: white;
+        background-color: #c4c4c4; /* Initial background color */
+        transition: background-color 0.3s ease, border-radius 0.3s ease; /* Added border-radius transition */
+        margin: 6px;
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+      }
+
+      .square {
+        border-radius: 4px 3px 6px; /* Set border-radius to 0 for square shape */
+      }
+
+      .circle-inner {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 80px; /* Adjusted line height to vertically center the text */
+        font-weight: bold;
+        color: white;
+        background-color: green; /* Initial inner background color */
+        transition: background-color 0.3s ease;
+        margin: 20px;
+      }
+
+      #myButton {
+        background-color: aquamarine;
+        margin: 10px;
+        display: block;
+        position: absolute;
+        top: 29%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+      }
+
+      #circleContainer {
+        position: relative;
+        text-align: center;
+        margin-top: 120px; /* Adjusted margin to create space between circle and button */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="circleContainer">
+      <div id="circle" class="circle">
+        <div id="circleInner" class="circle-inner">
+          <span id="innerCounter">00</span>
+        </div>
+      </div>
+    </div>
+    <button id="myButton">Change color</button>
+
+    <script>
+      var counter = 0;
+      var circle = document.getElementById("circle");
+      var circleInner = document.getElementById("circleInner");
+      var innerCounterDisplay = document.getElementById("innerCounter");
+
+      document.getElementById("myButton").addEventListener("click", function() {
+        counter++;
+        innerCounterDisplay.innerText = counter;
+
+        // Change background color of the inner circle based on counter value
+        if (counter % 2 === 0) {
+          circleInner.style.backgroundColor = "Yellow";
+        } else {
+          circleInner.style.backgroundColor = "red";
+        }
+
+        // Change shape of the outer circle based on counter value
+        if (counter % 2 === 0) {
+          circle.classList.add("square");
+        } else {
+          circle.classList.remove("square");
+        }
+      });
+    </script>
+  </body>
+</html>
